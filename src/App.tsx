@@ -30,7 +30,7 @@ function App() {
                     <h2>Почему стоит учиться у нас?</h2>
                     <Button
                         isActive={contentType == ReasonKey.way}
-                            onClick={() => handleClick(ReasonKey.way)}>Подход</Button>
+                        onClick={() => handleClick(ReasonKey.way)}>Подход</Button>
                     <Button isActive={contentType == ReasonKey.easy}
                             onClick={() => handleClick(ReasonKey.easy)}>Доступность</Button>
                     <Button isActive={contentType == ReasonKey.program}
