@@ -2,11 +2,14 @@ import './App.css'
 import Header from "./components/Header.tsx";
 import WayToTeach from "./components/WayToTeach.tsx";
 import Button from "./components/Button/Button.tsx";
-import {ways} from "./data.ts";
+import {ReasonKey, reasons, ways} from "./data.ts";
+import {useState} from "react";
 
 function App() {
-    function handleClick(type: string) {
-        console.log(`Button ${type} clicked`);
+    const [contentType, setContentType] = useState<ReasonKey | null>(null);
+
+    function handleClick(contentType: ReasonKey) {
+        setContentType(contentType);
     }
 
     return (
@@ -18,16 +21,22 @@ function App() {
                     <ul>
                         {
                             ways.map((way, index) => (
-                                <WayToTeach key={index} title={way.title} description={way.description}/>
+                                <WayToTeach key={index} {...way}/>
                             ))
                         }
                     </ul>
                 </section>
                 <section>
                     <h2>Почему стоит учиться у нас?</h2>
-                    <Button onClick={() => handleClick('way')}>Подход</Button>
-                    <Button onClick={() => handleClick('easy')}>Доступность</Button>
-                    <Button onClick={() => handleClick('program')}>Концентрация</Button>
+                    <Button
+                        isActive={contentType == ReasonKey.way}
+                            onClick={() => handleClick(ReasonKey.way)}>Подход</Button>
+                    <Button isActive={contentType == ReasonKey.easy}
+                            onClick={() => handleClick(ReasonKey.easy)}>Доступность</Button>
+                    <Button isActive={contentType == ReasonKey.program}
+                            onClick={() => handleClick(ReasonKey.program)}>Концентрация</Button>
+
+                    {contentType ? <p>{reasons[contentType]}</p> : <p>Нажмите на кнопку, чтобы узнать больше</p>}
                 </section>
             </main>
         </>

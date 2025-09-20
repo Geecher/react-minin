@@ -1,7 +1,7 @@
 import './Button.css'
 
-export default function Button({children, onClick}: { children: React.ReactNode, onClick: () => void }) {
+export default function Button({children, onClick, isActive = false}: { children: React.ReactNode, onClick: () => void, isActive: boolean }) {
     return (
-        <button className='button' onClick={onClick}>{children}</button>
+        <button className={`button ${isActive}`} onClick={onClick}>{children}</button>
     )
 }
