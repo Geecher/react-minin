@@ -60,3 +60,8 @@ header {
 .read-the-docs {
     color: #888;
 }
+
+.intro-section {
+    text-align: center;
+    margin: 0 0 4em;
+}

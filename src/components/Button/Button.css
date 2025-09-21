@@ -10,6 +10,10 @@
     transition: border-color 0.25s;
 }
 
+.button.true {
+    background-color: #8585c4;
+}
+
 .button:hover {
     border-color: #646cff;
 }

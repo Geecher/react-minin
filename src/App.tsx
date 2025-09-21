@@ -1,43 +1,30 @@
 import './App.css'
 import Header from "./components/Header.tsx";
-import WayToTeach from "./components/WayToTeach.tsx";
-import Button from "./components/Button/Button.tsx";
-import {ReasonKey, reasons, ways} from "./data.ts";
+import TeachingSection from "./components/TeachingSection.tsx";
+import DifferencesSection from "./components/DifferencesSection.tsx";
+import IntroSection from "./components/IntroSection.tsx";
+import TabSection from "./components/TabSection.tsx";
+import FeedbackSection from "./components/FeedbackSection.tsx";
 import {useState} from "react";
 
 function App() {
-    const [contentType, setContentType] = useState<ReasonKey | null>(null);
-
-    function handleClick(contentType: ReasonKey) {
-        setContentType(contentType);
-    }
+    const [tab, setTab] = useState('feedback')
 
     return (
         <>
             <Header/>
             <main className="App">
-                <section>
-                    <h1>Добро пожаловать в Result University!</h1>
-                    <ul>
-                        {
-                            ways.map((way, index) => (
-                                <WayToTeach key={index} {...way}/>
-                            ))
-                        }
-                    </ul>
-                </section>
-                <section>
-                    <h2>Почему стоит учиться у нас?</h2>
-                    <Button
-                        isActive={contentType == ReasonKey.way}
-                        onClick={() => handleClick(ReasonKey.way)}>Подход</Button>
-                    <Button isActive={contentType == ReasonKey.easy}
-                            onClick={() => handleClick(ReasonKey.easy)}>Доступность</Button>
-                    <Button isActive={contentType == ReasonKey.program}
-                            onClick={() => handleClick(ReasonKey.program)}>Концентрация</Button>
+                <IntroSection/>
+                <TabSection active={tab} onChange={(current) => setTab(current)}/>
 
-                    {contentType ? <p>{reasons[contentType]}</p> : <p>Нажмите на кнопку, чтобы узнать больше</p>}
-                </section>
+                {tab === 'main' && <>
+                    <TeachingSection/>
+                    <DifferencesSection/>
+                </>}
+
+                {tab === 'feedback' && <>
+                    <FeedbackSection/>
+                </>}
             </main>
         </>
     )
