@@ -1,4 +1,9 @@
-function WayToTeach(props: { title?: string, description?: string }) {
+type WayToTeachProps = {
+    title?: string;
+    description?: string;
+};
+
+function WayToTeach(props: WayToTeachProps) {
     return (
         <li className='card'>
             <p>

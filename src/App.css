@@ -3,23 +3,6 @@
     margin: 0 auto;
 }
 
-header {
-    background-color: #1a1a1a;
-    min-height: 20vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    padding: 0 2em;
-
-    h3 {
-        display: flex;
-        align-items: center;
-        gap: 0.4em;
-    }
-}
-
 .logo {
     height: 6em;
     padding: 1.5em;

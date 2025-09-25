@@ -1,12 +1,20 @@
-import './Button.css'
+import classes from './Button.module.css'
 
-function Button({children, onClick, isActive = false}: {
+type ButtonProps = {
     children: React.ReactNode,
     onClick?: () => void,
     isActive?: boolean
-}) {
+    type?: "button" | "submit" | "reset"
+}
+
+function Button({children, onClick, isActive = false, type}: ButtonProps) {
     return (
-        <button className={`button ${isActive}`} onClick={onClick}>{children}</button>
+        <button
+            className={`${classes.button} ${isActive && classes.true}`}
+            onClick={onClick}
+            type={type}>
+            {children}
+        </button>
     )
 }
 

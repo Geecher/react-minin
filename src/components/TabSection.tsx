@@ -1,6 +1,13 @@
 import Button from "./Button/Button.tsx";
 
-function TabSection({active, onChange}: { active: string, onChange: (tab: string) => void }) {
+export type TabType = 'main' | 'feedback'
+
+type TabSectionProps = {
+    active: TabType,
+    onChange: (tab: TabType) => void
+}
+
+function TabSection({active, onChange}: TabSectionProps) {
     return (
         <section>
             <Button

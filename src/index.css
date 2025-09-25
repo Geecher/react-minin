@@ -43,6 +43,13 @@ ul {
     padding: 0;
 }
 
+.control {
+    border: 1px solid #242424;
+    border-radius: .3em;
+    padding: 0.7em;
+    resize: none;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;
