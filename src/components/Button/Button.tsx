@@ -1,19 +1,16 @@
 import classes from './Button.module.css'
 
-type ButtonProps = {
-    children: React.ReactNode,
-    onClick?: () => void,
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     isActive?: boolean
-    type?: "button" | "submit" | "reset"
 }
 
-function Button({children, onClick, isActive = false, type}: ButtonProps) {
+function Button({isActive = false, ...props}: ButtonProps) {
     return (
         <button
             className={`${classes.button} ${isActive && classes.true}`}
-            onClick={onClick}
-            type={type}>
-            {children}
+            {...props}
+        >
+            {props.children}
         </button>
     )
 }
