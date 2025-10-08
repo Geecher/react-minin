@@ -1,24 +1,7 @@
 import styled from 'styled-components'
 import Button from "./Button/Button.tsx";
-import {useRef, useState} from "react";
-
-function StateVsRef() {
-    const input = useRef<HTMLInputElement>(null);
-    const [inputValue, setInputValue] = useState<string>('');
-
-    function toggleShow(e: React.KeyboardEvent) {
-        if (e.key === 'Enter' && input.current) {
-            setInputValue(input.current.value);
-        }
-    }
-
-    return (
-        <div style={{marginBottom: '10em'}}>
-            <h3>Input value: {inputValue}</h3>
-            <input ref={input} type="text" className={'control'} onKeyDown={toggleShow} />
-        </div>
-    )
-}
+import {useState} from "react";
+import StateVsRef from "./StateVsRef.tsx";
 
 const FeedbackForm = styled.form`
     display: flex;
@@ -40,9 +23,6 @@ function FeedbackSection() {
         hasError: true,
         reason: 'question'
     });
-    // const [name, setName] = useState('');
-    // const [hasError, setHasError] = useState(true);
-    // const [reason, setReason] = useState('question');
 
     function handleName(e: React.ChangeEvent<HTMLInputElement>) {
         const name = e.target.value;
@@ -77,10 +57,6 @@ function FeedbackSection() {
                     <option value="suggestion">Предложение</option>
                     <option value="complaint">Жалоба</option>
                 </select>
-
-                {/*<pre>*/}
-                {/*    {JSON.stringify(form, null, 2)}*/}
-                {/*</pre>*/}
 
                 <label htmlFor={'message'}>Сообщение:</label>
                 <textarea id={'message'} className={'control'} rows={4}></textarea>

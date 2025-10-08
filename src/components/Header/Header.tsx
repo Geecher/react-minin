@@ -20,11 +20,11 @@ const HeaderContainer = styled.header`
 `
 
 function Header() {
-    const [time, setTime] = useState(new Date().toLocaleTimeString());
+    const [time, setTime] = useState(new Date());
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTime(new Date().toLocaleTimeString());
+            setTime(new Date());
         }, 1000);
         return () => clearInterval(interval);
     }, []);
@@ -32,7 +32,7 @@ function Header() {
     return (
         <HeaderContainer>
             <h3>Result University <img src={logo} alt=''/></h3>
-            <span>Время: {time}</span>
+            <span>Время: {time.toLocaleTimeString()}</span>
         </HeaderContainer>
     )
 }

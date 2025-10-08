@@ -1,6 +1,6 @@
 import Button from "./Button/Button.tsx";
 
-export type TabType = 'main' | 'feedback'
+export type TabType = 'main' | 'feedback' | 'effect';
 
 type TabSectionProps = {
     active: TabType,
@@ -19,6 +19,11 @@ function TabSection({active, onChange}: TabSectionProps) {
                 isActive={active == 'feedback'}
                 onClick={() => onChange('feedback')}>
                 Обратная связь
+            </Button>
+            <Button
+                isActive={active == 'effect'}
+                onClick={() => onChange('effect')}>
+                Эффекты
             </Button>
         </section>
     )
